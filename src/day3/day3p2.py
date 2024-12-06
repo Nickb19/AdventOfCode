@@ -1,9 +1,9 @@
 import re
 
-regexNNN = r"do\(\).*?mul\(\d+,\d+\).*?don\'t\(\)|do\(\).*?mul\(\d+,\d+\).*$"
+regexDo = r"do\(\).*?mul\(\d+,\d+\).*?don\'t\(\)|do\(\).*?mul\(\d+,\d+\).*$"
 regex = r"^mul\(\d+,\d+\).*?don\'t\(\)"
 
-textfile = open('reginp.txt', 'r', re.M)
+textfile = open('reginp.txt', 'r')
 filetext = textfile.read()
 textfile.close()
 matches = re.findall(regex, filetext)
@@ -16,7 +16,7 @@ for match in matches:
     multiply = int(numbers[0]) * int(numbers[1])
     total += multiply
 
-goodMatches = re.findall(regexNNN, filetext)
+goodMatches = re.findall(regexDo, filetext, re.M)
 goodTotal = 0
 
 for match in goodMatches:
